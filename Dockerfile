@@ -5,9 +5,14 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn
 RUN yarn --version
 RUN mkdir /app
 WORKDIR /app
+# bundle
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+COPY package.json /app/package.json
+# yarn
+COPY yarn.lock /app/yarn.lock
+RUN yarn install --check-files
 COPY . /app
 
 # Add a script to be executed every time the container starts.
