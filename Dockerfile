@@ -15,6 +15,7 @@ COPY package.json /app/package.json
 # Yarn
 COPY yarn.lock /app/yarn.lock
 RUN yarn install --check-files
+
 COPY . /app
 
 # Add a script to be executed every time the container starts.
