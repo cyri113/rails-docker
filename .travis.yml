@@ -1,0 +1,6 @@
+services:
+  - docker
+
+script:
+  - docker-compose build
+  - docker-compose run web rails test
